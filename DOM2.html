@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<!-- https://codeorum.com/tutorials/simple-accordion-collapsible-element-with-vanilla-js-and-simple-animation-effect -->
+
+<head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="DOM2.css">
+</head>
+
+<body>
+    <div class="container m-4">
+        <div class="panel is-info">
+            <p class="panel-heading">Choose one or more SDS PDF files to upload</p>
+            <div class="field is-horizontal mr-4 ml-4 pt-3">
+                <div class="field-label is-small">
+                    <label class="label has-text-info-dark">Email:</label>
+                </div>
+                <div class="field-body is-small">
+                    <div class="field">
+                        <div class="control has-icons-left has-icons-right"><input class="input" type="email" placeholder="Email Required"><span class="icon is-small is-left"><i class="mdi mdi-24px mdi-email-outline has-text-grey-light"></i></span><span class="icon is-small is-right has-text-success"><i class="mdi mdi-24px"></i></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal mr-4 ml-4 pb-3">
+                <div class="field-label is-small">
+                    <label class="label has-text-info-dark">Choose SDS Files</label>
+                </div>
+                <div class="field-body is-small">
+                    <div class="field">
+                        <div class="file has-name is-fullwidth">
+                            <label class="file-label disable control has-icons-right">
+                                <input class="file-input" type="file" name="resume" accept="application/pdf" multiple disabled>
+                                <span class="file-cta has-text-info-dark">
+                                    <span class="file-icon">
+                                        <i class="mdi mdi-24px mdi-file-upload-outline"></i>
+                                    </span>
+                                    <span class="file-label disable">Choose a file…</span>
+                                </span>
+                                <span class="file-name control has-text-info-dark">No Files Chosen</span>
+                                <span class="file-selected-check icon is-small is-right has-text-success">
+                                    <i class="mdi mdi-24px"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion"> 
+        </div>
+    </div>
+    <div id="templateDiv" style="display:none;">
+        <!-- Begin template -->
+        <div class="panel is-info">
+            <div class="columns is-gapless is-mobile is-size-7-mobile panel-heading">
+                <span class="column is-8" style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Bar Keepers Friend Cooktop Cleaner.pdf</span>
+                <div class="column columns has-text-right-mobile is-gapless is-mobile">
+                    <span class="column filecount has-text-right-mobile has-text-right-tablet has-text-weight-light is-6-mobile is-9-tablet is-size-7 mr-3 p-0">1 of 7</span>
+                    <span class="column p-0">
+                        <i class="mdi mdi-18px mdi-check-circle-outline"></i>
+                    </span>
+                    <span class="column p0">
+                        <i class="mdi mdi-24px mdi-chevron-double-down"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="drop-down">
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">Uploaded File URL</label>
+                    </div>
+                    <div class="field-body is-small">
+                        <div class="field">
+                            <div class="control">
+                                <a class="button is-info is-small" href="blob:null/d7f57ac7-127c-4b6b-a1f1-e4e7f8fc942d" target="_blank">Handy link to SDS File.</a>
+                            </div>
+                            <p class="help">View selected SDS in new window to assist with filling out meta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">SDS PDF File</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-small" type="text" name="fileName" placeholder="you_may_change_file_name_here.pdf" value="DAP- Ready-Mixed Concrete Patch.pdf">
+                            </div>
+                            <p class="help">Consider changing file name to a more readable name without special chars and underscores instead of spaces.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">Product Name</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control"><input class="input is-small" type="text" name="productName"
+                                    placeholder="ACME Toilet Bowl Cleaner"></div>
+                            <p class="help">SDS Product names are often not as they are on the lable. This name will be shown in the SDS book table of contents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">Product Manufacturer</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-small" type="text" name="manufacturer" placeholder="ACME Inc.">
+                            </div>
+                            <p class="help">Manufacturer Name as written in the SDS PDF file.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">SDS Date</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-small" name="date" type="date" style="width: 250px;" max="2022-09-11">
+                            </div>
+                            <p class="help">The most recent date you can find within the SDS document (release/revision/created).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">SDS Book Location</label>
+                    </div>
+                    <div class="field-body">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="pr-4"><label class="checkbox"><input class="checkbox mr-2" type="checkbox" name="engineering">Engineering</label></td>
+                                    <td class="pr-4"><label class="checkbox"><input class="checkbox mr-2" type="checkbox" name="houseKeeping">Housekeeping</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-4"><label class="checkbox"><input class="checkbox mr-2" type="checkbox" name="pantry">Pantry</label></td>
+                                    <td class="pr-4"><label class="checkbox"><input class="checkbox mr-2" type="checkbox" name="frontOffices">Front Offices</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-4"><label class="checkbox"><input  class="checkbox mr-2" type="checkbox" name="poolRoom">Pool Pump Room</label></td>
+                                    <td class="pr-4"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <p class="help">Select the SDS book(s) that may include these sheets.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr class="dropdown-divider">
+                <div class="field is-horizontal mr-4 ml-4 pt-3">
+                    <div class="field-label is-small">
+                        <label class="label has-text-info-dark">Upload</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="button is-info is-normal" type="submit" value="Upload SDS &amp; Meta">
+                            </div>
+                            <p class="help">Upload SDS file and send SDS data to the server.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+        <!-- End template -->
+    </div>
+    <script src="DOM2.js"></script>
+    
+</body>
+
+</html>

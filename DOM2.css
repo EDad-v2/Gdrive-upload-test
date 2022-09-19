@@ -1,0 +1,98 @@
+.panel-heading {
+    font-size: revert;
+    font-weight: revert;
+    line-height: revert;
+}
+
+div.accordion > form > div > div.drop-down {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all .5s linear;
+}
+
+div.accordion > form > div.active > div.drop-down {
+    max-height: max-content;
+    opacity: 1;
+    overflow: unset;
+}
+
+div.accordion > form > div > div.panel-heading {
+    border-radius: 6px 6px 6px 6px;
+    cursor: pointer!important;
+    pointer-events: all!important;
+}
+
+div.accordion > form > div.active > div.panel-heading {
+    border-radius: 6px 6px 0 0;
+}
+
+div.accordion > form > div.active {
+    margin-bottom: 0.75rem;
+}
+
+div.accordion > form > div.panel > div.panel-heading {
+    line-height: 24px;
+}
+/*
+div.accordion > div > p > span:nth-child(2), div.accordion > div > p > span:nth-child(3) {
+    float: right!important; 
+}
+*/
+/*
+div.accordion > div > div > span:nth-child(2) > i::before {
+    content: "\F0B2D";
+    transition: all .5s ease-in-out;
+    font-size: 24px;
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all .5s ease-in-out;
+}
+
+div.accordion > div.active > p > span:nth-child(2) > i::before {
+    transform:rotate(180deg);
+}
+*/
+
+div.columns.is-gapless.is-mobile.is-size-7-mobile.panel-heading > div > span.column.p0 > i::before {
+    transition: all .5s ease-in-out;
+}
+
+div.active > div.columns.is-gapless.is-mobile.is-size-7-mobile.panel-heading > div > span.column.p0 > i::before {
+    transform:rotate(-180deg);
+}
+
+div.accordion div.active.is-info.panel > div.drop-down > div.field.is-horizontal:last-child {
+    padding-bottom: .75rem;
+}
+
+.accordion .panel:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+
+
+.columns.is-gapless:not(:last-child) {
+    margin-bottom: .25rem;
+}
+/*
+i.plus-minus:before {
+    content: "\F0B2D"; 
+    transition: all .5s ease-in-out;
+}
+
+div.active i.plus-minus::before {
+    transform:rotate(180deg);
+}
+*/
+.disable {
+    cursor: not-allowed;
+}
+
+input[type="email"].disable {
+    pointer-events: none;
+}
